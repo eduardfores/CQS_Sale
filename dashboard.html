@@ -94,7 +94,12 @@
         <!-- Custom scripts for all pages-->
         <script src="js/sb-admin-2.min.js"></script>
 
+        
+        <!-- AWS scripts-->
+        <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1086.0.min.js"></script>
+
         <!-- S3 Connection -->
+        <script src="js/credentials/credentials.js"></script>
         <script src="js/S3Client.js"></script>
         <script src="js/S3/s3-database.js"></script>
 
@@ -108,7 +113,7 @@
             var s3 = S3ClientFactory.newClient();
             var worker = createWorker();
 
-            
+            var databaseFile = getDatabaseFromS3();
         </script>
     </body>
 </html>
