@@ -58,10 +58,10 @@
                 <h1 class="h3 mb-0 text-gray-800">Products</h1>
             </div>
 
-            <div class="row">
-                <!-- Card Example -->
+            <div id="cards" class="row">
+                <!-- Card Example 
                 <div class="col-xl-3 col-md-6 mb-4">
-                    <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card border-left-primary shadow h-100 py-3">
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
@@ -70,7 +70,7 @@
                                     <div class="h5 mb-0 font-weight-bold text-gray-800">$0</div>
                                 </div>
                                 <div class="col-auto">
-                                    <img src="img/img-mac-pro.jpg" class="rounded mx-auto d-block"></i>
+                                    <img src="img/img-mac-pro.jpg" class="rounded mx-auto d-block" width="264" height="156"></i>
                                 </div>
                                 <div class="input-group mt-3">
                                     <input type="number" class="form-control" placeholder="Bid value" aria-label="Recipient's username" aria-describedby="basic-addon2">
@@ -81,7 +81,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>-->
+                
             </div>
         </div>
         <!-- Bootstrap core JavaScript-->
@@ -103,8 +104,13 @@
         <script src="js/S3Client.js"></script>
         <script src="js/S3/s3-database.js"></script>
 
+        <!-- HTML scripts-->
+        <script src="js/htmlScripts/card-creation.js"></script>
+
         <!--SQLite worker-->
         <script src="js/sqlite/sqlite-worker.js"></script>
+        <script src="js/sqlite/sqlite-load.js"></script>
+        <script src="js/sqlite/sqlite-selects.js"></script>
 
 
         <script>
@@ -114,6 +120,8 @@
             var worker = createWorker();
 
             var databaseFile = getDatabaseFromS3();
+
+            loadSQLite(worker, databaseFile);
         </script>
     </body>
 </html>
