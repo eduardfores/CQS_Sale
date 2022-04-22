@@ -5,7 +5,6 @@ function loadProducts(worker, number){
 
     worker.onmessage = function (event) {
         var results = event.data.results[0].values;
-        console.log(results);
 
         var html = "";
         for(let i = 0; results.length > i; i++){

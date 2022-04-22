@@ -11,17 +11,17 @@ function createCard(element){
     
     html += '</div><div class="h5 mb-0 font-weight-bold text-gray-800">$';
     
-    html+=element[2]
+    html += element[2]
     
     html += '</div></div><div class="col-auto"><img src="'
     
     html += element[3]
     
-    html +='" class="rounded mx-auto d-block" width="264" height="156"></i></div>'+
+    html += '" class="rounded mx-auto d-block" width="264" height="156"></i></div>'+
                 '<div class="input-group mt-3">'+
-                    '<input type="number" class="form-control" placeholder="Bid value" aria-label="Recipients username" aria-describedby="basic-addon2">'+
+                    '<input id="bidUp'+element[0]+'" type="number" class="form-control" placeholder="Bid value" aria-label="Recipients username" aria-describedby="basic-addon2">'+
                     '<div class="input-group-append">'+
-                      '<button class="btn btn-outline-secondary" type="button">Bid Up</button>'+
+                      '<button class="btn btn-outline-secondary" type="button" onclick="saveAndSendBidUp('+element[0]+');">Bid Up</button>'+
                     '</div>'+
                 '</div>'+
             '</div>'+
@@ -32,6 +32,5 @@ function createCard(element){
 }
 
 function addCards(html){
-    console.log(html)
     document.getElementById("cards").innerHTML += html;
 }
