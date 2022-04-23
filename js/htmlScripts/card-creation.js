@@ -21,7 +21,7 @@ function createCard(element){
                 '<div class="input-group mt-3">'+
                     '<input id="bidUp'+element[0]+'" type="number" class="form-control" placeholder="Bid value" aria-label="Recipients username" aria-describedby="basic-addon2">'+
                     '<div class="input-group-append">'+
-                      '<button class="btn btn-outline-secondary" type="button" onclick="saveAndSendBidUp('+element[0]+');">Bid Up</button>'+
+                      '<button class="btn btn-outline-secondary" type="button" onclick="checkPrice('+element[0]+');">Bid Up</button>'+
                     '</div>'+
                 '</div>'+
             '</div>'+

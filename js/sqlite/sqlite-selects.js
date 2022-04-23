@@ -1,5 +1,5 @@
 
-function loadProducts(worker, number){
+function loadProducts(number){
 
     var commands = "SELECT * FROM Products LIMIT " + number +";";
 
@@ -21,4 +21,47 @@ function loadProducts(worker, number){
 
     worker.postMessage({ action: 'exec', sql: commands });
 
+}
+
+function selectProductCheckingPice(id, product){
+
+    var command = "SELECT * FROM Products WHERE id = "+id;
+
+    worker.onmessage = function (event) {
+        var results = event.data.results[0].values;
+
+        var bidUp = document.getElementById("bidUp"+id).value;
+
+        if(bidUp > results[0][2]){
+            product.value = results[0];
+            product.onchange();
+        } else {
+            alert("The price has to be higher than "+ results[0][2])
+        }
+
+        if (!results) {
+			error({message: event.data.error});
+			return;
+		}
+    }
+
+    worker.postMessage({ action: 'exec', sql: command });
+}
+
+function selectProduct(id){
+
+    var command = "SELECT * FROM Products WHERE id = "+id;
+
+    worker.onmessage = function (event) {
+        var results = event.data.results;
+
+        console.log(results);
+
+        if (!results) {
+			error({message: event.data.error});
+			return;
+		}
+    }
+
+    worker.postMessage({ action: 'exec', sql: command });
 }

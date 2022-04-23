@@ -1,14 +1,13 @@
 /**
  * This function is called to load the SQLite today 
  * 
- * @param {worker} worker 
  * @param {promise} sqlFile 
  */
-function loadSQLite(worker, sqlFile){
+function loadSQLite(sqlFile){
     var r = new FileReader();
 	r.onload = function () {
 		worker.onmessage = function () {
-			loadProducts(worker,10);
+			loadProducts(10);
 		};
         
 		try {
