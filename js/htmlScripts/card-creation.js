@@ -9,7 +9,7 @@ function createCard(element){
                         
     html += element[1]  
     
-    html += '</div><div class="h5 mb-0 font-weight-bold text-gray-800">$';
+    html += '</div><div id="price'+element[0]+'"class="h5 mb-0 font-weight-bold text-gray-800">$';
     
     html += element[2]
     
@@ -33,4 +33,8 @@ function createCard(element){
 
 function addCards(html){
     document.getElementById("cards").innerHTML += html;
+}
+
+function updatePriceOfProduct(id, price){
+    document.getElementById("price"+id).innerHTML="$"+price;
 }

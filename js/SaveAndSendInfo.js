@@ -6,7 +6,7 @@ function checkPrice(element){
 function saveAndSendBidUp(val) {
     let product=val.split(',');
 
-    let newPrice = document.getElementById("bidUp"+product[0]).ariaValueMax;
-
+    let newPrice = document.getElementById("bidUp"+product[0]).value;
+    
     updatePrice(product[0], newPrice)
 }
