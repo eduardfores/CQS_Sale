@@ -83,6 +83,9 @@
         <script src="js/S3Client.js"></script>
         <script src="js/S3/s3-database.js"></script>
 
+        <!-- Webscokets scripts-->
+        <script src="js/webSocket/webSocket-client-js"></script>
+
         <!-- HTML scripts-->
         <script src="js/htmlScripts/card-creation.js"></script>
 
@@ -99,6 +102,9 @@
         <script>
             document.getElementById("spanName").innerHTML=name;
             var s3 = S3ClientFactory.newClient();
+
+            createWebSocket();
+
             var worker = createWorker();
 
             var databaseFile = getDatabaseFromS3();

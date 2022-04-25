@@ -1,0 +1,11 @@
+function createWebSocket(){
+    let socket = new WebSocket(WEBSOCKET_URL);
+
+    socket.onopen = function(e) {
+        console.log(`connection established!`);
+    };
+
+    socket.onmessage = function(event) {
+        console.log(`[message] Data received from server: ${event.data}`);
+    };
+}
