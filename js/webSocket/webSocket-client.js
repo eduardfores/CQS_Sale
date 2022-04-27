@@ -22,9 +22,9 @@ function sendMessage(id, price){
     '{'+
         '"action": "sendMessage",'+
         '"message": {'+
-            '"id":id,'+
-            '"majorBidder":name,'+
-            '"price":price'+
+            '"id":' + id + ','+
+            '"majorBidder":"' + name + '",'+
+            '"price":' + price+
         '}'+
     '}';
 
