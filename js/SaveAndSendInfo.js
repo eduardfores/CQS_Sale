@@ -8,5 +8,7 @@ function saveAndSendBidUp(val) {
 
     let newPrice = document.getElementById("bidUp"+product[0]).value;
     
-    updatePrice(product[0], newPrice)
+    updatePrice(product[0], newPrice);
+
+    sendMessage(product[0], newPrice);
 }

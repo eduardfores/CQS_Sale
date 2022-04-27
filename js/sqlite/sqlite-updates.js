@@ -5,7 +5,7 @@ function updatePrice(id, price){
     worker.onmessage = function (event) {
         var results = event.data.results;
 
-        selectProduct(id);
+        selectProductbyId(id);
         if (!results) {
 			error({message: event.data.error});
 			return;

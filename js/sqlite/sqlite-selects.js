@@ -48,13 +48,14 @@ function selectProductCheckingPice(id, product){
     worker.postMessage({ action: 'exec', sql: command });
 }
 
-function selectProduct(id){
+function selectProductbyId(id){
 
     var command = "SELECT * FROM Products WHERE id = "+id;
 
     worker.onmessage = function (event) {
         var results = event.data.results[0].values[0];
 
+        //update HTML with new price
         updatePriceOfProduct(id, results[2]);
 
         if (!results) {
