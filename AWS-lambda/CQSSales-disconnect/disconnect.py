@@ -7,11 +7,10 @@ SECRET_KEY='SECRET_KEY'
 BUCKET_NAME='BUCKET_NAME'
 TEMPALTE_FILE='connections.config'
 
-client = boto3.client('apigatewaymanagementapi', endpoint_url="API_GATEWAY_URL")
 s3 = boto3.client("s3",aws_access_key_id=ACCESS_KEY, aws_secret_access_key=SECRET_KEY)
 
 def lambda_handler(event, context):
-    # Read connections from S3
+    
     obj = s3.get_object(Bucket=BUCKET_NAME, Key=TEMPALTE_FILE)
     
     config = obj['Body'].read().decode('utf-8')
@@ -21,10 +20,16 @@ def lambda_handler(event, context):
     
     connectionId=event['requestContext']['connectionId']
     
-    #Send messages to every connection but the origin 
-    for conn in connections:
-        if conn != connectionId:
-            client.post_to_connection(ConnectionId=conn, Data=event['body'])
+    connections.remove(connectionId)
+    print(connectionId+" deleted")
     
+    configModified=""
+    
+    for conn in connections:
+        configModified += conn+";"
+            
+    print(configModified)
+    
+    s3.put_object(Bucket=BUCKET_NAME, Key=TEMPALTE_FILE, Body=configModified)
     
     return {'statusCode': 200}

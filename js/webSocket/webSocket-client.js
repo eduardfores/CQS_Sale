@@ -6,12 +6,14 @@ function createWebSocket(){
     };
 
     socket.onmessage = function(event) {
-        console.log(`[message] Data received from server: ${event.data}`);
+        let json = JSON.parse(event.data);
+        updatePrice(json.message.id, json.message.price, json.message.majorBidder);
     };
 
      window.addEventListener("beforeunload", function(e){
         //call disconect socket function and delete de connectionId in the connections.config file
-        console.log("HELLO")
+        socket.disconnect();
+        console.log("Conneciton closed!");
      }, false);
 
     return socket;
