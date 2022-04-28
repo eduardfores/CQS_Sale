@@ -29,9 +29,13 @@ class SQLite:
         price = msg['message']['price']
         majorBidder = msg['message']['majorBidder']
         
-        self.cur.execute(UPDATE_PRODUCT,(price, majorBidder, id))
-        self.con.commit()
-        
+        try:
+            self.cur.execute(UPDATE_PRODUCT,(price, majorBidder, id))
+            self.con.commit()
+        finally:
+            self.cur.close()
+            self.con.close()
+            
         print("product "+str(id)+" updated by "+majorBidder+" with price: "+str(price)+"!")
         self.create_db_file(s3)
         
@@ -43,7 +47,3 @@ class SQLite:
             ContentType="binary/octet-stream")
         
         os.remove(self.file)
-        
-    def close_connection(self):
-        self.cur.close()
-        self.con.close()

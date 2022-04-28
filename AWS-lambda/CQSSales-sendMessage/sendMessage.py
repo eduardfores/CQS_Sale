@@ -13,12 +13,12 @@ DB_TMP_FILE='/tmp/' + DB_FILE
 client = boto3.client('apigatewaymanagementapi', endpoint_url="SOCKET_URL")
 s3 = boto3.client("s3",aws_access_key_id=ACCESS_KEY, aws_secret_access_key=SECRET_KEY)
 
-#download db file from S3 to /tmp directory
-boto3.resource('s3').Bucket(BUCKET_NAME).download_file(DB_FILE, DB_TMP_FILE)
-sql = SQLite(BUCKET_NAME, DB_TMP_FILE)
-
 def lambda_handler(event, context):
     
+    #download db file from S3 to /tmp directory
+    boto3.resource('s3').Bucket(BUCKET_NAME).download_file(DB_FILE, DB_TMP_FILE)
+    sql = SQLite(BUCKET_NAME, DB_TMP_FILE)
+
     # Read connections from S3
     obj = s3.get_object(Bucket=BUCKET_NAME, Key=TEMPALTE_FILE)
     
@@ -43,7 +43,5 @@ def lambda_handler(event, context):
                 client.post_to_connection(ConnectionId=conn, Data=msg)
     else:
         print("data comming from "+connectionId+" is lower than db price "+price)
-    
-    sql.close_connection()
     
     return {'statusCode': 200}
