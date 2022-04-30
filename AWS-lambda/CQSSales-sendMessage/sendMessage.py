@@ -31,7 +31,7 @@ def lambda_handler(event, context):
     connectionId=event['requestContext']['connectionId']
     msg = event['body']
     
-    sql.update_price(s3, json.loads(msg))
+    sql.execute_SQL(s3, json.loads(msg))
 
     #Send messages to every connection but the origin
     for conn in connections:

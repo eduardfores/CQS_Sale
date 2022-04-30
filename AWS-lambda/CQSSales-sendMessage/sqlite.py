@@ -9,7 +9,7 @@ class SQLite:
         self.file = file
         pass
         
-    def update_price(self, s3, msg):
+    def execute_SQL(self, s3, msg):
         self.con = sqlite3.connect(self.file)
         self.cur = self.con.cursor()
         
