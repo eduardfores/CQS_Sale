@@ -1,5 +1,5 @@
-function createWebSocket(){
-    let socket = new WebSocket(WEBSOCKET_URL);
+function createWebSocket(websocket){
+    let socket = new WebSocket(websocket);
 
     socket.onopen = function(e) {
         console.log(`connection established!`);
@@ -7,7 +7,10 @@ function createWebSocket(){
 
     socket.onmessage = function(event) {
         let json = JSON.parse(event.data);
-        updatePrice(json.message.id, json.message.price, json.message.majorBidder);
+        console.log(json);
+        if(json.action){
+            updatePrice(json.message.id, json.message.price, json.message.majorBidder);
+        }
     };
 
      window.addEventListener("beforeunload", function(e){
@@ -19,16 +22,16 @@ function createWebSocket(){
     return socket;
 }
 
-function sendMessage(id, price){
+function sendMessage(sql, tuple){
     let message = 
     '{'+
         '"action": "sendMessage",'+
         '"message": {'+
-            '"id":' + id + ','+
-            '"majorBidder":"' + name + '",'+
-            '"price":' + price+
+            '"sql":"' + sql + '",'+
+            '"data": [' + tuple +']'+ 
         '}'+
     '}';
 
+    console.log(message);
     socket.send(message);
 }

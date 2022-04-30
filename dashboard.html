@@ -103,7 +103,7 @@
             document.getElementById("spanName").innerHTML=name;
             var s3 = S3ClientFactory.newClient();
 
-            var socket = createWebSocket();
+            var socket = createWebSocket(WEBSOCKET_URL);
 
             var worker = createWorker();
 

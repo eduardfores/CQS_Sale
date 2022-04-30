@@ -3,10 +3,8 @@ function updatePrice(id, price, majorBidder = name){
     var command = "UPDATE Products SET price = "+price+", majorBidder = '"+majorBidder+"' WHERE id = "+id+";";
 
     worker.onmessage = function (event) {
-        var results = event.data.results;
-
         selectProductbyId(id);
-        if (!results) {
+        if (event.data.error) {
 			error({message: event.data.error});
 			return;
 		}

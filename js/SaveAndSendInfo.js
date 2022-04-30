@@ -10,5 +10,8 @@ function saveAndSendBidUp(val) {
     
     updatePrice(product[0], newPrice);
 
-    sendMessage(product[0], newPrice);
+    let sql = "UPDATE Products SET price = ? , majorBidder = ? WHERE id = ?;"
+    let tuple = [newPrice, '"'+name+'"', product[0]]
+
+    sendMessage(sql, tuple);
 }
