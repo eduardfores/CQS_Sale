@@ -5,13 +5,14 @@ import os
 class SQLite:
     
     def __init__(self, bucket, file):
-        self.con = sqlite3.connect(file)
-        self.cur = self.con.cursor()
         self.bucket = bucket
         self.file = file
         pass
         
     def update_price(self, s3, msg):
+        self.con = sqlite3.connect(self.file)
+        self.cur = self.con.cursor()
+        
         sql = msg['message']['sql']
         tup = msg['message']['data']
         
@@ -21,8 +22,7 @@ class SQLite:
         finally:
             self.cur.close()
             self.con.close()
-            
-        self.create_db_file(s3)
+            self.create_db_file(s3)
         
     def create_db_file(self, s3):
         f = open(self.file, "rb")
@@ -30,5 +30,3 @@ class SQLite:
         s3.put_object(ACL='public-read', Bucket=self.bucket, Key=self.file.replace("/tmp/",""), 
         Body=f.read(), CacheControl="max-age=0,no-cache,no-store,must-revalidate",
             ContentType="binary/octet-stream")
-        
-        os.remove(self.file)
