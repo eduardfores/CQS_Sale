@@ -9,7 +9,7 @@ function createWebSocket(websocket){
         let json = JSON.parse(event.data);
         console.log(json);
         if(json.action){
-            updatePrice(json.message.id, json.message.price, json.message.majorBidder);
+            updatePrice(json.message.data[2], json.message.data[0], json.message.data[1]);
         }
     };
 
@@ -32,6 +32,5 @@ function sendMessage(sql, tuple){
         '}'+
     '}';
 
-    console.log(message);
     socket.send(message);
 }
