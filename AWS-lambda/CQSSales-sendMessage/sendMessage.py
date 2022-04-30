@@ -31,17 +31,11 @@ def lambda_handler(event, context):
     connectionId=event['requestContext']['connectionId']
     msg = event['body']
     
-    #check the price send by the user to save and propagate it
-    correct = sql.check_price(json.loads(msg))
-    
-    if(correct):
-        sql.update_price(s3, json.loads(msg))
-    
-        #Send messages to every connection but the origin 
-        for conn in connections:
-            if conn != connectionId:
-                client.post_to_connection(ConnectionId=conn, Data=msg)
-    else:
-        print("data comming from "+connectionId+" is lower than db price "+price)
+    sql.update_price(s3, json.loads(msg))
+
+    #Send messages to every connection but the origin 
+    for conn in connections:
+        if conn != connectionId:
+            client.post_to_connection(ConnectionId=conn, Data=msg)
     
     return {'statusCode': 200}
