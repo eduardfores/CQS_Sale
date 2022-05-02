@@ -7,10 +7,13 @@ ACCESS_KEY='ACCESS_KEY'
 SECRET_KEY='SECRET_KEY'
 BUCKET_NAME='BUCKET_NAME'
 TEMPALTE_FILE='connections.config'
+
 DB_FILE='database-products.db'
 DB_TMP_FILE='/tmp/' + DB_FILE
 
-client = boto3.client('apigatewaymanagementapi', endpoint_url="https://4hv31mufl2.execute-api.eu-central-1.amazonaws.com/production")
+WEBSOCKET='WEB_SOCKET'
+
+client = boto3.client('apigatewaymanagementapi', endpoint_url=WEBSOCKET)
 s3 = boto3.client("s3",aws_access_key_id=ACCESS_KEY, aws_secret_access_key=SECRET_KEY)
 
 #download db file from S3 to /tmp directory
