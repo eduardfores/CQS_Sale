@@ -117,9 +117,9 @@ You must upload the empty file [connections.config](https://github.com/eduardfor
 
 ### Installation
 
-#### To Test
+_Below is the instructions to install the application in AWS Step by step or how to use the files in your project as middleware._
 
-_Below is the instructions to install the the application in AWS Step by step._
+#### To Test
 
 1. You have to import to you S3 all files and directories of my gitHub in public ACL. You must add [connections.config](https://github.com/eduardfores/CQS_Sale/blob/main/connections.config) only when you are using the S3 connection managment with SQS method is not necessary. The AWS-lambda directory is not necessary
 
@@ -144,7 +144,7 @@ _With these imports you can test my demo web_
 4. You have to import the CQSSales-disconnect in the Disconnect endpoint.
 
 5. You have to import the CQSSales-managment in the sendMessage endpoint.
- 
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## AWS Architecture
