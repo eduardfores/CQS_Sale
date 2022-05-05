@@ -105,6 +105,8 @@ You have to configure S3 with static host endpoint
 You must create a standard queue in SQS service
 [Create queue in AWS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-create-queue.html)
 
+<p style="color: red"> You can create a FIFO queue but for this project is not necessary </p>
+
 * S3 configuration
 
 You must upload the empty file [connections.config](https://github.com/eduardfores/CQS_Sale/blob/main/connections.config) in S3.
@@ -113,20 +115,41 @@ You must upload the empty file [connections.config](https://github.com/eduardfor
 - !!! connections.config never has to be PUBLIC !!!
 ```
 
-<p style="color: red"> You can create a FIFO queue but for this project is not necessary </p>
-
 ### Installation
+
+#### To Test
 
 _Below is the instructions to install the the application in AWS Step by step._
 
+1. You have to import to you S3 all files and directories of my gitHub in public ACL. You must add [connections.config](https://github.com/eduardfores/CQS_Sale/blob/main/connections.config) only when you are using the S3 connection managment with SQS method is not necessary. The AWS-lambda directory is not necessary
 
+2. You have to create one API-gateway with websockets with endpoints Connection, Disconnect and sendMessage.
 
+3. You have to import the CQSSales-connect lambda in the Connection endpoint.
+
+4. You have to import the CQSSales-disconnect in the Disconnect endpoint.
+
+5. You have to import the CQSSales-managment in the sendMessage endpoint.
+
+_With these imports you can test my demo web_
+
+#### To Use as Middleware
+
+1. You have to import [websocket-client.js](https://github.com/eduardfores/CQS_Sale/blob/main/js/webSocket/webSocket-client.js) to your web or application.
+
+2. You have to create one API-gateway with websockets with endpoints Connection, Disconnect and sendMessage.
+
+3. You have to import the CQSSales-connect lambda in the Connection endpoint.
+
+4. You have to import the CQSSales-disconnect in the Disconnect endpoint.
+
+5. You have to import the CQSSales-managment in the sendMessage endpoint.
+ 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## AWS Architecture
 
 _The Architecture can be expressed with the next diagram_
-
 
 <!-- LICENSE -->
 ## License
