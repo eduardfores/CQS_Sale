@@ -114,6 +114,9 @@ You must upload the empty file [connections.config](https://github.com/eduardfor
 ```diff
 - !!! connections.config never has to be PUBLIC !!!
 ```
+* credentials.js
+
+You must fill the constants with your personal inforamtion in the file [credentials.js](https://github.com/eduardfores/CQS_Sale/blob/main/js/credentials/credentials.js)
 
 ### Installation
 
@@ -149,7 +152,17 @@ _With these imports you can test my demo web_
 
 ## AWS Architecture
 
-_The Architecture can be expressed with the next diagram_
+_The Architecture using S3 can be expressed with the next diagram_
+
+<div align="center">
+    <img src="README_IMGS/AWS-sales-s3.png" alt="Diagram"/>
+</div>
+
+_The Architecture using SQS can be expressed with the next diagram_
+
+<div align="center">
+    <img src="README_IMGS/AWS-sales-sqs.png" alt="Diagram"/>
+</div>
 
 <!-- LICENSE -->
 ## License
