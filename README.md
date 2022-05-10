@@ -11,7 +11,7 @@
   <h3 align="center">Simple Serverless MiddleWare in AWS with Edge-Computing </h3>
 
   <p align="center">
-    This project is one niddleware to build simple serveless application with edge-computing concept executing one little database in SQLite in the client browser. 
+    This project is one middleware to build simple serveless application with edge-computing concept executing one little database in SQLite in the client browser. 
     <br />
     <br />
     <a href="http://cqs-sales.s3-website.eu-central-1.amazonaws.com/">Demo</a>
@@ -43,14 +43,14 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-The project contain one website connected to s3 to download the necessary database to show the sales. The files download from the S3 are .db file (little file with databases in SQLite). These file are load in the SQLite wasm in the client side.
+The project contain a website connected to s3 to download the necessary database to show the sales. The files downloaded from the S3 are .db file (little file with databases in SQLite). These files are loaded in the SQLite wasm in the client side.
 
 The clients process the database in the browser to show the data and add the new bids and send them to AWS to send through the websockets to other clients using one API-gateway Websocket.
 
 So in this project there are:
 * Hosting Static web in S3
 * The web reads from S3 bucket the database.db file
-* SQLite executions in the client side
+* SQLite's executions in the client side
 * SQLite file modification (UPDATES/INSERTS) using python and save it in S3
 * Websocket connecitons with API-gateway 
 
@@ -59,7 +59,7 @@ So in this project there are:
 <!-- BUILT STARTED -->
 ### Built With
 
-This section list the frameworks/libraries used to create this blog. 
+This section lists the frameworks/libraries used to create this blog. 
 
 * [S3 AWS](https://aws.amazon.com/es/s3/)
 * [Lambda AWS](https://aws.amazon.com/es/lambda/)
@@ -77,18 +77,18 @@ This section list the frameworks/libraries used to create this blog.
 <!-- GETTING STARTED -->
 ## Getting Started
 
-In this section I explain you about how you can import this project to your AWS account to test it.This code can be used in your project to manage the websocket conections. 
+In this section I will explain how you can import this project to your AWS account to test it. This code can be used in your project to manage the websocket connections. 
 
-You can select what technology you will use to manage the connections. You can use S3 or SQS to manage the connections denepnds of these election you have to import the [S3-connectionManagement](https://github.com/eduardfores/CQS_Sale/tree/main/AWS-lambda/S3-connectionManagment) or [SQS-connectionManagement](https://github.com/eduardfores/CQS_Sale/tree/main/AWS-lambda/SQS-connectionManagment).
+You will use S3 or SQS to manage the connection depending on if you import [S3-connectionManagement](https://github.com/eduardfores/CQS_Sale/tree/main/AWS-lambda/S3-connectionManagment) or [SQS-connectionManagement](https://github.com/eduardfores/CQS_Sale/tree/main/AWS-lambda/SQS-connectionManagment), respectively.
 
 ```diff
-- AWS S3 is more expensive but is more fast
-- AWS SQS is more cheap but is more slow
+- AWS S3 is more expensive but is faster
+- AWS SQS is more cheaper but is slower
 ```
 
 ### Prerequisites
 
-This is an example of how to install the functions you need to use the software and how to install them.
+This is an example of how to install the functions you need to use the software.
 
 * S3 configuration
 
@@ -116,7 +116,7 @@ You must upload the empty file [connections.config](https://github.com/eduardfor
 ```
 * credentials.js
 
-You must fill the constants with your personal inforamtion in the file [credentials.js](https://github.com/eduardfores/CQS_Sale/blob/main/js/credentials/credentials.js)
+You must fill the constants with your personal information in the file [credentials.js](https://github.com/eduardfores/CQS_Sale/blob/main/js/credentials/credentials.js)
 
 ### Installation
 
@@ -124,7 +124,7 @@ _Below is the instructions to install the application in AWS Step by step or how
 
 #### To Test
 
-1. You have to import to you S3 all files and directories of my gitHub in public ACL. You must add [connections.config](https://github.com/eduardfores/CQS_Sale/blob/main/connections.config) only when you are using the S3 connection managment with SQS method is not necessary. The AWS-lambda directory is not necessary
+1. You have to import to you S3 all files and directories of my gitHub in public ACL. You must add [connections.config](https://github.com/eduardfores/CQS_Sale/blob/main/connections.config) only when you are using the S3 connection management with SQS method is not necessary. The AWS-lambda directory is not necessary
 
 2. You have to create one API-gateway with websockets with endpoints Connection, Disconnect and sendMessage.
 
@@ -132,7 +132,7 @@ _Below is the instructions to install the application in AWS Step by step or how
 
 4. You have to import the CQSSales-disconnect in the Disconnect endpoint.
 
-5. You have to import the CQSSales-managment in the sendMessage endpoint.
+5. You have to import the CQSSales-management in the sendMessage endpoint.
 
 _With these imports you can test my demo web_
 
@@ -146,7 +146,7 @@ _With these imports you can test my demo web_
 
 4. You have to import the CQSSales-disconnect in the Disconnect endpoint.
 
-5. You have to import the CQSSales-managment in the sendMessage endpoint.
+5. You have to import the CQSSales-management in the sendMessage endpoint.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
